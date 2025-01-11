@@ -36,7 +36,7 @@ public class Destructable : MonoBehaviour
         {
             if (!bullet.isEnemy)
             {
-                //Level.instance.AddScore(scoreVal);
+                Level.instance.AddScore(scoreVal);
                 Destroy(gameObject);
                 Destroy(bullet.gameObject);
             }
