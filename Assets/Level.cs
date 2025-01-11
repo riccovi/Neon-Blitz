@@ -20,16 +20,16 @@ public class Level : MonoBehaviour
 
     private void Awake()
     {   
-//         if (instance == null)
-//         {
+        if (instance == null)
+        {
           instance = this;
-//           //DontDestroyOnLoad(gameObject);
+          DontDestroyOnLoad(gameObject);
 //           scoreText = GameObject.Find("ScoreText").GetComponent<Text>();
-//         }
-//         else
-//         {
-//             Destroy(gameObject);
-//         }
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 
     // Start is called before the first frame update

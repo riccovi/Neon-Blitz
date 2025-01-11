@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MeteorFall : MonoBehaviour
 {
-    public float fallSpeed = 0.5f;
+    public float fallSpeed = 4f;
 
     // Start is called before the first frame update
     void Start()

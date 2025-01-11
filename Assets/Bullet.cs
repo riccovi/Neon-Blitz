@@ -14,7 +14,7 @@ public class Bullet : MonoBehaviour
     void Start()
     {
         Destroy(gameObject, 4); // Bullet disappears after x seconds
-        //DontDestroyOnLoad(gameObject); // Bullets stay when new level transitions
+        DontDestroyOnLoad(gameObject); // Bullets stay when new level transitions
     }
 
     // Update is called once per frame
