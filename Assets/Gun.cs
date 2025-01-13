@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class Gun : MonoBehaviour
 {
+    public int powerUpLevelRequirement = 0;
+
     public Bullet bullet;
     Vector2 direction;
 
     public bool autoShoot = false;
-    public float shootInterval = 0.3f; // Shooting every x seconds
+    public float shootInterval = 0.5f; // Shooting every x seconds
     public float shootDelay = 0f; // Wait in seconds before it starts shooting
     float shootTimer = 0f;
     float delayTimer = 0f;

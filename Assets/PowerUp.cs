@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PowerUp : MonoBehaviour
 {
+    public int scoreVal = 50;
     // Possible PowerUps
     public bool activateShield;
     public bool addGuns;

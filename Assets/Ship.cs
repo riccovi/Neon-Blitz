@@ -5,7 +5,7 @@ using UnityEngine;
 public class Ship : MonoBehaviour
 {
     
-    float speed = 4; // 4 pixels per frame
+    float speed = 3; // 4 pixels per frame
     bool left;
     bool right;
     bool up;
@@ -17,6 +17,7 @@ public class Ship : MonoBehaviour
     float nextFireTime = 0f; // Tracks when next bullet can be fired
 
     GameObject shield;
+    int powerUpGunLevel = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -27,6 +28,10 @@ public class Ship : MonoBehaviour
         foreach(Gun gun in guns)
         {
             gun.isActive = true;
+            if (gun.powerUpLevelRequirement != 0)
+            {
+                gun.gameObject.SetActive(false);
+            }
         }
     }
 
@@ -43,9 +48,13 @@ public class Ship : MonoBehaviour
         // Preventing rapid fire
         if (shoot && Time.time >= nextFireTime)
         {
+            shoot = false;
             foreach(Gun gun in guns)
             {
+                if (gun.gameObject.activeSelf)
+                {
                 gun.Shoot(); // Shoot through every current gun
+                }
             }
         nextFireTime = Time.time + fireCooldown;
         } 
@@ -81,7 +90,7 @@ public class Ship : MonoBehaviour
         transform.position = pos;
     }
 
-    // Shield
+    // Shield PowerUp
     void ActivateShield()
     {
         shield.SetActive(true);
@@ -93,6 +102,25 @@ public class Ship : MonoBehaviour
     bool HasShield()
     {
         return shield.activeSelf; // Check if shield is active
+    }
+
+    // Gun PowerUp
+    void AddGuns()
+    {
+         powerUpGunLevel++;
+         foreach(Gun gun in guns)
+         {
+            if (gun.powerUpLevelRequirement == powerUpGunLevel)
+            {
+                gun.gameObject.SetActive(true);
+            }
+         }
+    }
+
+    // Speed PowerUp
+    void AddSpeed()
+    {
+        speed++;
     }
 
     //Collision 
@@ -134,6 +162,15 @@ public class Ship : MonoBehaviour
             {
                 ActivateShield();
             }
+            if (powerUp.addGuns)
+            {
+                AddGuns();
+            }
+            if (powerUp.addSpeed)
+            {
+                AddSpeed();
+            }
+            Level.instance.AddScore(powerUp.scoreVal);
             Destroy(powerUp.gameObject);
         }
     }
