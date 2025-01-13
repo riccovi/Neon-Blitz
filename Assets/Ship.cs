@@ -16,9 +16,13 @@ public class Ship : MonoBehaviour
     float fireCooldown = 0.5f; // Time in seconds between bullets
     float nextFireTime = 0f; // Tracks when next bullet can be fired
 
+    GameObject shield;
+
     // Start is called before the first frame update
     void Start()
     {
+        shield = transform.Find("Shield").gameObject;
+        //DeactivateShield(); // Ship does not have shield upon startup 
         guns = transform.GetComponentsInChildren<Gun>(); 
         foreach(Gun gun in guns)
         {
@@ -77,23 +81,50 @@ public class Ship : MonoBehaviour
         transform.position = pos;
     }
 
+    // Shield
+    void ActivateShield()
+    {
+        shield.SetActive(true);
+    }
+    void DeactivateShield()
+    {
+        shield.SetActive(false);
+    }
+    bool HasShield()
+    {
+        return shield.activeSelf; // Check if shield is active
+    }
+
+    //Collision 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Bullet bullet = collision.GetComponent<Bullet>();
-        if (bullet != null)
+        if (bullet != null && bullet.isEnemy)
         {
-            if (bullet.isEnemy)
+            if (HasShield()) 
             {
-                Destroy(gameObject);
-                Destroy(bullet.gameObject);
+                DeactivateShield(); 
             }
+            else  
+            {
+                Destroy(gameObject); 
+            }
+            Destroy(bullet.gameObject);
+            return;
         }
         Destructable destructable = collision.GetComponent<Destructable>();
         if (destructable != null)
             if (bullet.isEnemy)
             {
-                Destroy(gameObject);
-                Destroy(destructable.gameObject);
+                if (HasShield()) 
+                {
+                    DeactivateShield(); 
+                }
+                else  
+                {
+                    Destroy(gameObject); 
+                }
+                Destroy(destructable.gameObject); 
             }
     }
 }

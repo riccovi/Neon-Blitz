@@ -1150,6 +1150,14 @@ PrefabInstance:
       propertyPath: m_text
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7681868049287978233, guid: b3214055c94c41f479433548f9808a54, type: 3}
+      propertyPath: m_fontSize
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 7681868049287978233, guid: b3214055c94c41f479433548f9808a54, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 200
+      objectReference: {fileID: 0}
     - target: {fileID: 7681868049287978235, guid: b3214055c94c41f479433548f9808a54, type: 3}
       propertyPath: m_IsActive
       value: 1
