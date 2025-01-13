@@ -26,7 +26,7 @@ public class UfoMove : MonoBehaviour
     {
         Vector2 pos = transform.position;
         pos.y -= fallSpeed*Time.fixedDeltaTime; // Move downwards
-        if (pos.y < -1) {Destroy(gameObject);} // If off screen
+        if (pos.y < -1) {Destroy(gameObject);} // If off screen, destroy
         // Create sin pattern of movement
         float sin = Mathf.Sin(pos.y*frequency) * amplitude;
         if(inverted){sin *= -1;}

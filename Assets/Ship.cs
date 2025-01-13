@@ -22,7 +22,7 @@ public class Ship : MonoBehaviour
     void Start()
     {
         shield = transform.Find("Shield").gameObject;
-        //DeactivateShield(); // Ship does not have shield upon startup 
+        DeactivateShield(); // Ship does not have shield upon startup 
         guns = transform.GetComponentsInChildren<Gun>(); 
         foreach(Gun gun in guns)
         {
@@ -98,7 +98,8 @@ public class Ship : MonoBehaviour
     //Collision 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Bullet bullet = collision.GetComponent<Bullet>();
+        // Bullet collision
+        Bullet bullet = collision.GetComponent<Bullet>(); 
         if (bullet != null && bullet.isEnemy)
         {
             if (HasShield()) 
@@ -110,21 +111,30 @@ public class Ship : MonoBehaviour
                 Destroy(gameObject); 
             }
             Destroy(bullet.gameObject);
-            return;
         }
+        // Enemy collision
         Destructable destructable = collision.GetComponent<Destructable>();
-        if (destructable != null)
-            if (bullet.isEnemy)
+        if (destructable != null && bullet.isEnemy)
+        {
+            if (HasShield()) 
             {
-                if (HasShield()) 
-                {
-                    DeactivateShield(); 
-                }
-                else  
-                {
-                    Destroy(gameObject); 
-                }
-                Destroy(destructable.gameObject); 
+                DeactivateShield(); 
             }
+            else  
+            {
+                Destroy(gameObject); 
+            }
+            Destroy(destructable.gameObject); 
+        }
+        // PowerUp collision
+        PowerUp powerUp = collision.GetComponent<PowerUp>();
+        if (powerUp)
+        {
+            if (powerUp.activateShield)
+            {
+                ActivateShield();
+            }
+            Destroy(powerUp.gameObject);
+        }
     }
 }
