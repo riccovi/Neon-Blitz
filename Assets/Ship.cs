@@ -146,6 +146,25 @@ public class Ship : MonoBehaviour
         speed--;
     }
 
+    // Destroy All On Screen PowerUp
+    void DestroyAllOnScreen()
+    {
+        Destructable[] destructables = FindObjectsOfType<Destructable>(); // Find all enemies
+        foreach (Destructable destructable in destructables)
+        {
+            if(destructable.transform.position.y < 11f) // If enemies are on screen
+            {
+                Destroy(destructable.gameObject); // Destroy Enemy
+                Level.instance.AddScore(destructable.scoreVal); // Add their score
+            }
+        }
+        Bullet[] bullets = FindObjectsOfType<Bullet>(); // Find all bullets
+        foreach (Bullet bullet in bullets)
+        {
+            Destroy(bullet.gameObject); // Destroy all bullets
+        } // Don't have to check if bullet is on screen, as enemies only start shooting once on screen
+    }
+
     //Collision 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -200,6 +219,10 @@ public class Ship : MonoBehaviour
             if (powerUp.loseSpeed)
             {
                 LoseSpeed();
+            }
+            if (powerUp.destroyAllOnScreen)
+            {
+                DestroyAllOnScreen();
             }
             Level.instance.AddScore(powerUp.scoreVal);
             Destroy(powerUp.gameObject);

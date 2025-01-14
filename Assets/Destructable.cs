@@ -16,7 +16,7 @@ public class Destructable : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (transform.position.y < 10f && !canBeDestroyed ) // Once on screen, allow enemy to be destroyed
+        if (transform.position.y < 11f && !canBeDestroyed ) // Once on screen, allow enemy to be destroyed
         {
             canBeDestroyed = true;
             // Guns only shoot when on screen

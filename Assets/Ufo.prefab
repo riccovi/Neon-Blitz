@@ -44,10 +44,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1223e251f8e99d64eb27f325399a9080, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  powerUpLevelRequirement: 0
   bullet: {fileID: 8413687447289401462, guid: 2822f0724bae78646bb7fdd51b34cdc8, type: 3}
   autoShoot: 1
   shootInterval: 1
-  shootDelay: 1
+  shootDelay: 0
   isActive: 0
 --- !u!1 &7446598214648356536
 GameObject:
