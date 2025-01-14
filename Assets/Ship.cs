@@ -106,21 +106,44 @@ public class Ship : MonoBehaviour
 
     // Gun PowerUp
     void AddGuns()
-    {
-         powerUpGunLevel++;
-         foreach(Gun gun in guns)
-         {
-            if (gun.powerUpLevelRequirement == powerUpGunLevel)
+    {   
+        if (powerUpGunLevel < 4) // Ensures max gun level is 4 
+        {
+            powerUpGunLevel++;
+            foreach(Gun gun in guns)
             {
-                gun.gameObject.SetActive(true);
+                if (gun.powerUpLevelRequirement == powerUpGunLevel)
+                {
+                    gun.gameObject.SetActive(true);
+                }
             }
-         }
+        }
+    }
+    void LoseGuns()
+    {
+        if (powerUpGunLevel > 0) // Ensures you always have the base gun level (level 0)
+        { 
+            powerUpGunLevel--;
+            foreach(Gun gun in guns)
+            {
+                if (gun.powerUpLevelRequirement == powerUpGunLevel+1)
+                {
+                    gun.gameObject.SetActive(false);
+                }
+            }
+        }
     }
 
     // Speed PowerUp
     void AddSpeed()
     {
         speed++;
+        speed++;
+    }
+    void LoseSpeed()
+    {
+        speed--;
+        speed--;
     }
 
     //Collision 
@@ -166,9 +189,17 @@ public class Ship : MonoBehaviour
             {
                 AddGuns();
             }
+            if (powerUp.loseGuns)
+            {
+                LoseGuns();
+            }
             if (powerUp.addSpeed)
             {
                 AddSpeed();
+            }
+            if (powerUp.loseSpeed)
+            {
+                LoseSpeed();
             }
             Level.instance.AddScore(powerUp.scoreVal);
             Destroy(powerUp.gameObject);
