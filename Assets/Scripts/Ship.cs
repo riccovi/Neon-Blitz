@@ -201,7 +201,7 @@ public class Ship : MonoBehaviour
         }
         // Enemy collision
         Destructable destructable = collision.GetComponent<Destructable>();
-        if (destructable != null && bullet.isEnemy)
+        if (destructable != null)// && bullet.isEnemy)
         {
             if (HasShield()) 
             {
