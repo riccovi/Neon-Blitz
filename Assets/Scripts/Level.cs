@@ -46,6 +46,11 @@ public class Level : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (SceneManager.GetActiveScene().name == "StartMenu")
+        {
+            return;
+        }
+
         if (startNextLvl)
         {
             if (nextLvlTimer <= 0)
@@ -74,6 +79,7 @@ public class Level : MonoBehaviour
             Time.timeScale = 1; // 'Unpause' the game
             SceneManager.LoadScene(0); //Load title screen
             isGameOver = false;
+            Destroy(gameObject);
         }
     }
 
@@ -91,6 +97,17 @@ public class Level : MonoBehaviour
         Time.timeScale = 0; // 'Pause' the game
         gameOverPanel.SetActive(true); // Display the GameOver Panel
         isGameOver = true;
+        ResetGameState();
+    }
+
+    private void ResetGameState()
+    {
+        numEnemies = 0;
+        startNextLvl = false;
+        nextLvlTimer = 1;
+        currLvl = 1;
+        score = 0;
+        scoreText.text = "0";
     }
 
     public void HighScoreUpdate()
