@@ -21,9 +21,7 @@ public class Ship : MonoBehaviour
     int powerUpGunLevel = 0;
 
     AudioManager audioManager;
-
-    public GameObject gameOverPanel;
-    bool isGameOver = false;
+    public Level level;
 
     private void Awake()
     {
@@ -55,12 +53,6 @@ public class Ship : MonoBehaviour
         up = Input.GetKey(KeyCode.UpArrow);
         down = Input.GetKey(KeyCode.DownArrow);
         shoot = Input.GetKey(KeyCode.X);
-
-        if (isGameOver && Input.GetKey(KeyCode.X)) //When GameOver panel is shown
-        {
-            Debug.Log("1");
-            ReturnToStartMenu();
-        } 
         
         // Preventing rapid fire
         if (shoot && Time.time >= nextFireTime)
@@ -105,14 +97,6 @@ public class Ship : MonoBehaviour
         if (pos.y <= 0.5f){pos.y = 0.5f;}
 
         transform.position = pos;
-    }
-
-    void ReturnToStartMenu()
-    {
-        Debug.Log("2");
-        Time.timeScale = 1; // 'Unpause' the game
-        SceneManager.LoadScene(0); // Load the title screen
-        isGameOver = false;
     }
 
     // Shield PowerUp
@@ -191,12 +175,11 @@ public class Ship : MonoBehaviour
     void GameOver()
     {
         audioManager.StopMusic();
-        Destroy(gameObject); 
         audioManager.PlaySFX(audioManager.shipDeath);
         DestroyAllOnScreen();
-        Time.timeScale = 0; // 'Pause' the game
-        gameOverPanel.SetActive(true); // Enable gameOver panel
-        isGameOver = true;
+        Level.instance.TriggerGameOver();
+        level.HighScoreUpdate();
+        Destroy(gameObject); 
     }
 
     //Collision 

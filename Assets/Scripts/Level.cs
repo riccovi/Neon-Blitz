@@ -18,6 +18,10 @@ public class Level : MonoBehaviour
 
     int score = 0;
     TMP_Text scoreText;
+    public TMP_Text highScoreText;
+
+    public GameObject gameOverPanel;
+    private bool isGameOver = false;
 
     private void Awake()
     {   
@@ -64,6 +68,13 @@ public class Level : MonoBehaviour
                 nextLvlTimer -= Time.deltaTime;
             }
         }
+
+        if (isGameOver && Input.GetKey(KeyCode.X))
+        {
+            Time.timeScale = 1; // 'Unpause' the game
+            SceneManager.LoadScene(0); //Load title screen
+            isGameOver = false;
+        }
     }
 
     public void AddScore(int scoreToAdd)
@@ -73,6 +84,29 @@ public class Level : MonoBehaviour
         {
             scoreText.text = score.ToString();
         }
+    }
+
+    public void TriggerGameOver()
+    {
+        Time.timeScale = 0; // 'Pause' the game
+        gameOverPanel.SetActive(true); // Display the GameOver Panel
+        isGameOver = true;
+    }
+
+    public void HighScoreUpdate()
+    {
+        if(PlayerPrefs.HasKey("SavedHighScore")) // Does a highscore exist
+        {
+            if(score > PlayerPrefs.GetInt("SavedHighScore")) // If current score is bigger than the saved highscore
+            {
+                PlayerPrefs.SetInt("SavedHighScore", score); // Set the saved highscore to the current score
+            }
+        }
+        else
+        {
+            PlayerPrefs.SetInt("SavedHighScore", score);
+        }
+        highScoreText.text = PlayerPrefs.GetInt("SavedHighScore").ToString(); //Display the saved highscore visually
     }
     
     public void AddEnemy(){numEnemies++;}

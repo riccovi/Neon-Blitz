@@ -911,7 +911,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfa716d5c8ec8d340b8889aebfe8875b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameOverPanel: {fileID: 4785320547986814867}
+  level: {fileID: 551622186}
 --- !u!50 &221830198626329638
 Rigidbody2D:
   serializedVersion: 4
@@ -1207,6 +1207,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78f71bb168f5e874f98a83838673fefc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  highScoreText: {fileID: 8884021738854940410}
+  gameOverPanel: {fileID: 4785320547986814867}
 --- !u!1 &1801044452099710085
 GameObject:
   m_ObjectHideFlags: 0
