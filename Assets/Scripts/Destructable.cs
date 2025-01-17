@@ -7,6 +7,13 @@ public class Destructable : MonoBehaviour
     bool canBeDestroyed = false;
     public int scoreVal = 50;
 
+    AudioManager audioManager;
+
+    private void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -39,6 +46,7 @@ public class Destructable : MonoBehaviour
                 Level.instance.AddScore(scoreVal);
                 Destroy(gameObject);
                 Destroy(bullet.gameObject);
+                audioManager.PlaySFX(audioManager.enemyDeath);
             }
         }
     }

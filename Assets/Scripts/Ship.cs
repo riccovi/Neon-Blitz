@@ -19,6 +19,13 @@ public class Ship : MonoBehaviour
     GameObject shield;
     int powerUpGunLevel = 0;
 
+    AudioManager audioManager;
+
+    private void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -53,7 +60,7 @@ public class Ship : MonoBehaviour
             {
                 if (gun.gameObject.activeSelf)
                 {
-                gun.Shoot(); // Shoot through every current gun
+                    gun.Shoot(); // Shoot through every current gun
                 }
             }
         nextFireTime = Time.time + fireCooldown;
@@ -138,11 +145,9 @@ public class Ship : MonoBehaviour
     void AddSpeed()
     {
         speed++;
-        speed++;
     }
     void LoseSpeed()
     {
-        speed--;
         speed--;
     }
 
@@ -179,6 +184,7 @@ public class Ship : MonoBehaviour
             else  
             {
                 Destroy(gameObject); 
+                audioManager.PlaySFX(audioManager.shipDeath);
             }
             Destroy(bullet.gameObject);
         }
@@ -193,6 +199,7 @@ public class Ship : MonoBehaviour
             else  
             {
                 Destroy(gameObject); 
+                audioManager.PlaySFX(audioManager.shipDeath);
             }
             Destroy(destructable.gameObject); 
         }
@@ -203,26 +210,32 @@ public class Ship : MonoBehaviour
             if (powerUp.activateShield)
             {
                 ActivateShield();
+                audioManager.PlaySFX(audioManager.powerup1);
             }
             if (powerUp.addGuns)
             {
                 AddGuns();
+                audioManager.PlaySFX(audioManager.powerup4);
             }
             if (powerUp.loseGuns)
             {
                 LoseGuns();
+                audioManager.PlaySFX(audioManager.powerdown);
             }
             if (powerUp.addSpeed)
             {
                 AddSpeed();
+                audioManager.PlaySFX(audioManager.powerup2);
             }
             if (powerUp.loseSpeed)
             {
                 LoseSpeed();
+                audioManager.PlaySFX(audioManager.powerdown);
             }
             if (powerUp.destroyAllOnScreen)
             {
                 DestroyAllOnScreen();
+                audioManager.PlaySFX(audioManager.powerup3);
             }
             Level.instance.AddScore(powerUp.scoreVal);
             Destroy(powerUp.gameObject);
