@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Ship : MonoBehaviour
 {
@@ -20,6 +21,9 @@ public class Ship : MonoBehaviour
     int powerUpGunLevel = 0;
 
     AudioManager audioManager;
+
+    public GameObject gameOverPanel;
+    bool isGameOver = false;
 
     private void Awake()
     {
@@ -51,6 +55,12 @@ public class Ship : MonoBehaviour
         up = Input.GetKey(KeyCode.UpArrow);
         down = Input.GetKey(KeyCode.DownArrow);
         shoot = Input.GetKey(KeyCode.X);
+
+        if (isGameOver && Input.GetKey(KeyCode.X)) //When GameOver panel is shown
+        {
+            Debug.Log("1");
+            ReturnToStartMenu();
+        } 
         
         // Preventing rapid fire
         if (shoot && Time.time >= nextFireTime)
@@ -95,6 +105,14 @@ public class Ship : MonoBehaviour
         if (pos.y <= 0.5f){pos.y = 0.5f;}
 
         transform.position = pos;
+    }
+
+    void ReturnToStartMenu()
+    {
+        Debug.Log("2");
+        Time.timeScale = 1; // 'Unpause' the game
+        SceneManager.LoadScene(0); // Load the title screen
+        isGameOver = false;
     }
 
     // Shield PowerUp
@@ -160,7 +178,7 @@ public class Ship : MonoBehaviour
             if(destructable.transform.position.y < 11f) // If enemies are on screen
             {
                 Destroy(destructable.gameObject); // Destroy Enemy
-                Level.instance.AddScore(destructable.scoreVal); // Add their score
+                //Level.instance.AddScore(destructable.scoreVal); // Add their score
             }
         }
         Bullet[] bullets = FindObjectsOfType<Bullet>(); // Find all bullets
@@ -168,6 +186,17 @@ public class Ship : MonoBehaviour
         {
             Destroy(bullet.gameObject); // Destroy all bullets
         } // Don't have to check if bullet is on screen, as enemies only start shooting once on screen
+    }
+
+    void GameOver()
+    {
+        audioManager.StopMusic();
+        Destroy(gameObject); 
+        audioManager.PlaySFX(audioManager.shipDeath);
+        DestroyAllOnScreen();
+        Time.timeScale = 0; // 'Pause' the game
+        gameOverPanel.SetActive(true); // Enable gameOver panel
+        isGameOver = true;
     }
 
     //Collision 
@@ -183,8 +212,7 @@ public class Ship : MonoBehaviour
             }
             else  
             {
-                Destroy(gameObject); 
-                audioManager.PlaySFX(audioManager.shipDeath);
+                GameOver();
             }
             Destroy(bullet.gameObject);
         }
@@ -198,8 +226,7 @@ public class Ship : MonoBehaviour
             }
             else  
             {
-                Destroy(gameObject); 
-                audioManager.PlaySFX(audioManager.shipDeath);
+                GameOver();
             }
             Destroy(destructable.gameObject); 
         }
