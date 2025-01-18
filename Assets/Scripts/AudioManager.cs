@@ -12,6 +12,7 @@ public class AudioManager : MonoBehaviour
     public AudioClip powerup2; // Speed powerup
     public AudioClip powerup3; // DestroyAllDestructables powerup 
     public AudioClip powerup4; // Gun powerup
+    public AudioClip powerup5; // Power Points
     public AudioClip powerdown; 
     public AudioClip enemyDeath;
     public AudioClip shipDeath; 

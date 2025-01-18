@@ -154,6 +154,7 @@ MonoBehaviour:
   loseGuns: 0
   loseSpeed: 0
   destroyAllOnScreen: 0
+  powerPoints: 1
 --- !u!61 &5805763928715810768
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -444,6 +444,7 @@ MonoBehaviour:
   powerup2: {fileID: 8300000, guid: b17829cbcccb6fe489ddbc21e45fca5c, type: 3}
   powerup3: {fileID: 8300000, guid: 15d2b3ffc7513ff459ad178c42ec1058, type: 3}
   powerup4: {fileID: 8300000, guid: aca7760b992bf654daf29aee9da4339e, type: 3}
+  powerup5: {fileID: 8300000, guid: 4bf16fc9c2ac0a5498076d6839c79d1a, type: 3}
   powerdown: {fileID: 8300000, guid: 3d33e8f42f3a60f4690308563e0d4239, type: 3}
   enemyDeath: {fileID: 8300000, guid: b657a37ec82595c4b9078723541562fc, type: 3}
   shipDeath: {fileID: 8300000, guid: 12cd88fee003e8c4aa4dda918310b828, type: 3}
@@ -1411,7 +1412,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &744689780405316696
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1509,8 +1510,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 484.5, y: 52.300003}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: 521.1, y: 52.300003}
+  m_SizeDelta: {x: 300, y: 54.7}
   m_Pivot: {x: 1, y: 0}
 --- !u!222 &6989301066227180951
 CanvasRenderer:

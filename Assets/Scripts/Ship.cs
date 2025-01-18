@@ -26,6 +26,7 @@ public class Ship : MonoBehaviour
     private void Awake()
     {
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+        DontDestroyOnLoad(gameObject);
     }
 
     // Start is called before the first frame update
@@ -177,8 +178,8 @@ public class Ship : MonoBehaviour
         audioManager.StopMusic();
         audioManager.PlaySFX(audioManager.shipDeath);
         DestroyAllOnScreen();
-        Level.instance.TriggerGameOver();
         level.HighScoreUpdate();
+        Level.instance.TriggerGameOver();
         Destroy(gameObject); 
     }
 
@@ -246,6 +247,10 @@ public class Ship : MonoBehaviour
             {
                 DestroyAllOnScreen();
                 audioManager.PlaySFX(audioManager.powerup3);
+            }
+            if (powerUp.powerPoints)
+            {
+                audioManager.PlaySFX(audioManager.powerup5);
             }
             Level.instance.AddScore(powerUp.scoreVal);
             Destroy(powerUp.gameObject);

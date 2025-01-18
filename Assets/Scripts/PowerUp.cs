@@ -12,6 +12,7 @@ public class PowerUp : MonoBehaviour
     public bool loseGuns;
     public bool loseSpeed;
     public bool destroyAllOnScreen;
+    public bool powerPoints;
 
     // Start is called before the first frame update
     void Start()
