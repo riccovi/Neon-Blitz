@@ -79,6 +79,8 @@ public class Level : MonoBehaviour
             Time.timeScale = 1; // 'Unpause' the game
             SceneManager.LoadScene(0); //Load title screen
             isGameOver = false;
+            score = 0;
+            scoreText.text = "0";
             Destroy(gameObject);
         }
     }
@@ -106,8 +108,6 @@ public class Level : MonoBehaviour
         startNextLvl = false;
         nextLvlTimer = 1;
         currLvl = 1;
-        score = 0;
-        scoreText.text = "0";
     }
 
     public void HighScoreUpdate()
