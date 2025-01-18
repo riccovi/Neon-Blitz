@@ -74,7 +74,7 @@ public class Level : MonoBehaviour
             }
         }
 
-        if (isGameOver && Input.GetKey(KeyCode.X))
+        if (isGameOver && Input.GetKey(KeyCode.R))
         {
             Time.timeScale = 1; // 'Unpause' the game
             SceneManager.LoadScene(0); //Load title screen
