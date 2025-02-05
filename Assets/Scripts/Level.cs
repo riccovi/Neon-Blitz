@@ -114,16 +114,19 @@ public class Level : MonoBehaviour
     {
         if(PlayerPrefs.HasKey("SavedHighScore")) // Does a highscore exist
         {
-            if(score > PlayerPrefs.GetInt("SavedHighScore")) // If current score is bigger than the saved highscore
+            // If current score is bigger than the saved highscore
+            if(score > PlayerPrefs.GetInt("SavedHighScore")) 
             {
-                PlayerPrefs.SetInt("SavedHighScore", score); // Set the saved highscore to the current score
+                // Set the saved highscore to the current score
+                PlayerPrefs.SetInt("SavedHighScore", score); 
             }
         }
         else
         {
             PlayerPrefs.SetInt("SavedHighScore", score);
         }
-        highScoreText.text = PlayerPrefs.GetInt("SavedHighScore").ToString(); //Display the saved highscore visually
+        //Display the saved highscore visually
+        highScoreText.text = PlayerPrefs.GetInt("SavedHighScore").ToString(); 
     }
     
     public void AddEnemy(){numEnemies++;}

@@ -147,13 +147,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7de33602d558d9b4797c538d22366b15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scoreVal: 50
+  scoreVal: 0
   activateShield: 0
   addGuns: 0
   addSpeed: 0
   loseGuns: 0
   loseSpeed: 0
   destroyAllOnScreen: 1
+  powerPoints: 0
 --- !u!61 &5805763928715810768
 BoxCollider2D:
   m_ObjectHideFlags: 0

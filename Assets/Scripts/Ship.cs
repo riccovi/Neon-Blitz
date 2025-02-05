@@ -117,7 +117,7 @@ public class Ship : MonoBehaviour
     // Gun PowerUp
     void AddGuns()
     {   
-        if (powerUpGunLevel < 4) // Ensures max gun level is 4 
+        if (powerUpGunLevel < 5) // Ensures max gun level is 5 
         {
             powerUpGunLevel++;
             foreach(Gun gun in guns)

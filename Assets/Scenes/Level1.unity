@@ -10253,6 +10253,30 @@ PrefabInstance:
       propertyPath: m_text
       value: Press R
       objectReference: {fileID: 0}
+    - target: {fileID: 1015080556, guid: b3214055c94c41f479433548f9808a54, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1015080556, guid: b3214055c94c41f479433548f9808a54, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1015080556, guid: b3214055c94c41f479433548f9808a54, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1503634164, guid: b3214055c94c41f479433548f9808a54, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 262.87
+      objectReference: {fileID: 0}
+    - target: {fileID: 1503634164, guid: b3214055c94c41f479433548f9808a54, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 320.57
+      objectReference: {fileID: 0}
+    - target: {fileID: 1503634164, guid: b3214055c94c41f479433548f9808a54, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 3.8
+      objectReference: {fileID: 0}
     - target: {fileID: 1787005017876770370, guid: b3214055c94c41f479433548f9808a54, type: 3}
       propertyPath: m_Name
       value: Level

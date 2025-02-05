@@ -160,7 +160,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fallSpeed: 1.5
-  amplitude: 1
+  amplitude: 1.5
   frequency: 2
   inverted: 0
 --- !u!1 &7446598214970133764
@@ -236,8 +236,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 8ef69c0442e236b4dbbc6133659ef83a, type: 3}
-  m_Color: {r: 1, g: 0.5518868, b: 0.98502296, a: 1}
+  m_Sprite: {fileID: 21300000, guid: afc0f683244515f4aa13311fdd24ba54, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
