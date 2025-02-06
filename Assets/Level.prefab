@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 185396036}
   - component: {fileID: 185396035}
   m_Layer: 5
-  m_Name: pressXText
+  m_Name: pressRText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -66,7 +66,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Press x
+  m_text: Press R
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 39d0ce18e5a86a242af2c718be49ec5f, type: 2}
   m_sharedMaterial: {fileID: 4720428052832117079, guid: 39d0ce18e5a86a242af2c718be49ec5f, type: 2}
@@ -416,7 +416,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1015080554}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 8.138176, y: -1.5509167, z: -2.5396793}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -611,7 +611,7 @@ RectTransform:
   m_GameObject: {fileID: 1503634160}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -100}
-  m_LocalScale: {x: 3.2128515, y: 3.2128515, z: 3.2128515}
+  m_LocalScale: {x: 5, y: 5, z: 3.2128515}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7681868049642700629}
@@ -619,8 +619,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 317.358, y: 14.054}
-  m_SizeDelta: {x: 458.06, y: 320.569}
+  m_AnchoredPosition: {x: 1007, y: 445.6}
+  m_SizeDelta: {x: 565.18, y: 377.48}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1503634163
 CanvasRenderer:
@@ -650,7 +650,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: cbef2fb8d44aed94297177261be84de5, type: 3}
+  m_Texture: {fileID: 2800000, guid: 1efc14524702f8c4694fc4697517592f, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -1412,7 +1412,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &744689780405316696
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1510,7 +1510,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 521.1, y: 52.300003}
+  m_AnchoredPosition: {x: 507.58, y: 52.300003}
   m_SizeDelta: {x: 300, y: 54.7}
   m_Pivot: {x: 1, y: 0}
 --- !u!222 &6989301066227180951

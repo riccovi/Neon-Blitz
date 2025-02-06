@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class Ship : MonoBehaviour
 {
     
-    float speed = 3; // 4 pixels per frame
+    float speed = 3; // 3 pixels per frame
     bool left;
     bool right;
     bool up;
@@ -147,11 +147,11 @@ public class Ship : MonoBehaviour
     // Speed PowerUp
     void AddSpeed()
     {
-        speed++;
+        speed += 1.5f;
     }
     void LoseSpeed()
     {
-        speed--;
+        speed -= 1.5f;
     }
 
     // Destroy All On Screen PowerUp

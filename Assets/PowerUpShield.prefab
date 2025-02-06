@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 5805763927849347308}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 3, y: 3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5805763928715810775}
@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 7df9732873b518a42939347ec23ebccd, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c0d6da2be03340a4fb5db408a237b811, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -147,12 +147,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7de33602d558d9b4797c538d22366b15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scoreVal: 50
   activateShield: 1
   addGuns: 0
   addSpeed: 0
   loseGuns: 0
   loseSpeed: 0
   destroyAllOnScreen: 0
+  powerPoints: 0
 --- !u!61 &5805763928715810768
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -166,7 +168,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0024692044, y: -0.008186221}
+  m_Offset: {x: -0.0024691224, y: -0.000037908554}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -177,5 +179,5 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.3233819, y: 0.32888687}
+  m_Size: {x: 0.38856828, y: 0.38864088}
   m_EdgeRadius: 0

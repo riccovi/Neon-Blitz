@@ -10241,49 +10241,13 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 185396033, guid: b3214055c94c41f479433548f9808a54, type: 3}
-      propertyPath: m_Name
-      value: pressRText
-      objectReference: {fileID: 0}
-    - target: {fileID: 185396033, guid: b3214055c94c41f479433548f9808a54, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 185396035, guid: b3214055c94c41f479433548f9808a54, type: 3}
-      propertyPath: m_text
-      value: Press R
-      objectReference: {fileID: 0}
-    - target: {fileID: 1015080556, guid: b3214055c94c41f479433548f9808a54, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1015080556, guid: b3214055c94c41f479433548f9808a54, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1015080556, guid: b3214055c94c41f479433548f9808a54, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1503634164, guid: b3214055c94c41f479433548f9808a54, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 262.87
-      objectReference: {fileID: 0}
-    - target: {fileID: 1503634164, guid: b3214055c94c41f479433548f9808a54, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 320.57
-      objectReference: {fileID: 0}
-    - target: {fileID: 1503634164, guid: b3214055c94c41f479433548f9808a54, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 3.8
-      objectReference: {fileID: 0}
     - target: {fileID: 1787005017876770370, guid: b3214055c94c41f479433548f9808a54, type: 3}
       propertyPath: m_Name
       value: Level
       objectReference: {fileID: 0}
     - target: {fileID: 4785320547986814867, guid: b3214055c94c41f479433548f9808a54, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4934520938137891092, guid: b3214055c94c41f479433548f9808a54, type: 3}
       propertyPath: m_RootOrder
@@ -10328,10 +10292,6 @@ PrefabInstance:
     - target: {fileID: 4934520938137891092, guid: b3214055c94c41f479433548f9808a54, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4947743300029024488, guid: b3214055c94c41f479433548f9808a54, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 507.58
       objectReference: {fileID: 0}
     - target: {fileID: 7681868049642700630, guid: b3214055c94c41f479433548f9808a54, type: 3}
       propertyPath: m_Camera
