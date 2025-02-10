@@ -10,53 +10,77 @@ public class StartMenu : MonoBehaviour
     public GameObject pressText;
     private int counter = 0;
 
-    public Camera mainCamera;
-    public float zoomedInSize = 4f;
-    public float zoomSpeed = 2f;
+    //Camera Zoom In
+    private float zoom;
+    private float zoomMultipler = 4f;
+    private float minZoom = 40f;
+    private float maxZoom = 160f;
+    private float velocity = 0f;
+    private float smoothTime = 1f;
     private bool isZooming = false;
+    [SerializeField] private Camera cam;
 
     void Start()
     {
-        Camera.main.aspect = 4f / 5f; // Set to 4:5 ratio
+       // Camera.main.aspect = 4f / 5f; // Set to 4:5 ratio
+       zoom = cam.orthographicSize;
     }
 
     void Update()
-    {
-        // First X press - open panel
+    {   
         if (Input.GetKeyDown(KeyCode.X)) // GetKeyDown, so that sound doesn't spam repeat when X is pressed
         {
-            if (counter == 0){
+            // First X press - open panel
+            if (counter == 0)
+            {
                 upgradesPanel.SetActive(true); //Enable upgrades panel
                 pressText.SetActive(false); // Disable 'press x' text
                 counter++;
-            }
-            else if (!isZooming){ // If the camera is not already zooming, call the function
-                startSound.Play();
-                StartCoroutine(ZoomIn());
-                // if (startSound != null){
-                //     startSound.Play();  // Play start sound
-                //     StartCoroutine(LoadLevelAfterSound()); // Load scene after the sound finishes
-                // }    
-            }
+            // Second X press - zoom in
+            } else if (!isZooming)
+            {
+                if (startSound != null){startSound.Play();} // Play start sound 
+                upgradesPanel.SetActive(false);
+                isZooming = true;
+                //StartCoroutine(ZoomAndLoad());
+            }    
+        }
+
+        if (isZooming)
+        {
+                zoom -= zoomMultipler;
+                zoom = Mathf.Clamp(zoom, minZoom, maxZoom);
+                cam.orthographicSize = Mathf.SmoothDamp(cam.orthographicSize, zoom, ref velocity, smoothTime);
+                cam.transform.position += new Vector3(0,0.15f,0);
+                if (cam.orthographicSize < minZoom+10){SceneManager.LoadSceneAsync("Level1");}
         }
     }
 
-    // IEnumerator LoadLevelAfterSound()
-    // {
-    //     yield return new WaitForSeconds(startSound.clip.length); // Wait for sound to finish
-    //     SceneManager.LoadSceneAsync("Level1"); // Load scene after delay
-    // }
-
-    IEnumerator ZoomIn(){
+    IEnumerator ZoomAndLoad()
+    {
         isZooming = true;
-        float startSize = mainCamera.orthographicSize;
-        float elapsedTime = 0f;
+        zoom -= zoomMultipler;
+        zoom = Mathf.Clamp(zoom, minZoom, maxZoom);
 
-        while (elapsedTime < 1f) // Runs for 1 second
+        float elapsedTime = 0f;
+        float startZoom = cam.orthographicSize;
+
+        while (elapsedTime < smoothTime)
         {
-            mainCamera.orthographicSize = Mathf.Lerp(startSize, zoomedInSize, elapsedTime);
-            elapsedTime += Time.deltaTime * zoomSpeed;
-            yield return null;
+            cam.orthographicSize = Mathf.SmoothDamp(cam.orthographicSize, zoom, ref velocity, smoothTime);
+            elapsedTime += Time.deltaTime;
+            yield return null;  
         }
+
+        cam.orthographicSize = zoom;
+        SceneManager.LoadSceneAsync("Level1");
+
+        //cam.orthographicSize = Mathf.SmoothDamp(cam.orthographicSize, zoom, ref velocity, smoothTime);
     }
 }
+
+
+
+
+
+
