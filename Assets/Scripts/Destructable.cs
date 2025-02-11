@@ -48,6 +48,9 @@ public class Destructable : MonoBehaviour
             if (!bullet.isEnemy)
             {
                 TakeDamage(1); // Reduce health by 1 when hit by bullet
+                if (health > 0){ // If enemy is not dead, play enemy hit sound, otherwise it will be enemy death sound
+                    audioManager.PlaySFX(audioManager.enemyHit); 
+                }
                 Destroy(bullet.gameObject); // Remove bullet
             }
         }

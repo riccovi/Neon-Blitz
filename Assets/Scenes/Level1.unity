@@ -9274,6 +9274,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1015080555, guid: b3214055c94c41f479433548f9808a54, type: 3}
+      propertyPath: enemyhit
+      value: 
+      objectReference: {fileID: 8300000, guid: 6b182ebbbcbc7e542a336f06858fdb76, type: 3}
     - target: {fileID: 1503634160, guid: b3214055c94c41f479433548f9808a54, type: 3}
       propertyPath: m_Name
       value: Background1

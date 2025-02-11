@@ -14,6 +14,7 @@ public class AudioManager : MonoBehaviour
     public AudioClip powerup4; // Gun powerup
     public AudioClip powerup5; // Power Points
     public AudioClip powerdown; 
+    public AudioClip enemyHit; 
     public AudioClip enemyDeath;
     public AudioClip shipDeath; 
 
