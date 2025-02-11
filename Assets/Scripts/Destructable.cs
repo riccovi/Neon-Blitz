@@ -8,6 +8,7 @@ public class Destructable : MonoBehaviour
     
     bool canBeDestroyed = false;
     public int scoreVal = 50;
+    public int health = 1;
 
     AudioManager audioManager;
 
@@ -46,13 +47,28 @@ public class Destructable : MonoBehaviour
         {
             if (!bullet.isEnemy)
             {
-                Level.instance.AddScore(scoreVal);
-                Destroy(gameObject);
-                Destroy(bullet.gameObject);
-                Instantiate(enemyExplosion, transform.position, Quaternion.identity);
-                audioManager.PlaySFX(audioManager.enemyDeath);
+                TakeDamage(1); // Reduce health by 1 when hit by bullet
+                Destroy(bullet.gameObject); // Remove bullet
             }
         }
+    }
+
+    public void TakeDamage(int damage)
+    {
+        health -= damage;
+
+        if (health <= 0)
+        {
+            Die();
+        }
+    }
+
+    private void Die()
+    {
+        Level.instance.AddScore(scoreVal); // Add score
+        Destroy(gameObject); // Destroy enemy
+        Instantiate(enemyExplosion, transform.position, Quaternion.identity); // Explosion animation
+        audioManager.PlaySFX(audioManager.enemyDeath); // Play audio
     }
 
     private void OnDestroy()
