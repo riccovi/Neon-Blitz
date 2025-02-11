@@ -39,8 +39,6 @@ public class Ship : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        spriteRenderer.sprite = gun1Sprite; // Default sprite upon start
-
         speedTrail.Stop();
 
         shield = transform.Find("Shield").gameObject;
