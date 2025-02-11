@@ -16,7 +16,7 @@ public class StartMenu : MonoBehaviour
     private float minZoom = 40f;
     private float maxZoom = 160f;
     private float velocity = 0f;
-    private float smoothTime = 1f;
+    private float smoothTime = 0.7f;
     private bool isZooming = false;
     [SerializeField] private Camera cam;
 
@@ -40,43 +40,21 @@ public class StartMenu : MonoBehaviour
             } else if (!isZooming)
             {
                 if (startSound != null){startSound.Play();} // Play start sound 
-                upgradesPanel.SetActive(false);
+                upgradesPanel.SetActive(false); // Disable upgrades panel
                 isZooming = true;
-                //StartCoroutine(ZoomAndLoad());
             }    
         }
 
-        if (isZooming)
+        if (isZooming) 
         {
-                zoom -= zoomMultipler;
-                zoom = Mathf.Clamp(zoom, minZoom, maxZoom);
-                cam.orthographicSize = Mathf.SmoothDamp(cam.orthographicSize, zoom, ref velocity, smoothTime);
-                cam.transform.position += new Vector3(0,0.15f,0);
-                if (cam.orthographicSize < minZoom+10){SceneManager.LoadSceneAsync("Level1");}
+                zoom -= zoomMultipler; 
+                zoom = Mathf.Clamp(zoom, minZoom, maxZoom); //Ensures zoom stays within min and max limits
+                cam.orthographicSize = Mathf.SmoothDamp(cam.orthographicSize, zoom, ref velocity, smoothTime); // Smoothly transition camera's zoom level
+                cam.transform.position += new Vector3(0,0.14f,0); // Moving the camera slightly upwards
+                if (cam.orthographicSize < minZoom+10){SceneManager.LoadSceneAsync("Level1");} // When zoomed in, load level 1
         }
     }
 
-    IEnumerator ZoomAndLoad()
-    {
-        isZooming = true;
-        zoom -= zoomMultipler;
-        zoom = Mathf.Clamp(zoom, minZoom, maxZoom);
-
-        float elapsedTime = 0f;
-        float startZoom = cam.orthographicSize;
-
-        while (elapsedTime < smoothTime)
-        {
-            cam.orthographicSize = Mathf.SmoothDamp(cam.orthographicSize, zoom, ref velocity, smoothTime);
-            elapsedTime += Time.deltaTime;
-            yield return null;  
-        }
-
-        cam.orthographicSize = zoom;
-        SceneManager.LoadSceneAsync("Level1");
-
-        //cam.orthographicSize = Mathf.SmoothDamp(cam.orthographicSize, zoom, ref velocity, smoothTime);
-    }
 }
 
 
