@@ -28,6 +28,8 @@ public class Ship : MonoBehaviour
     public Sprite gun2Sprite;
     public Sprite gun3Sprite; 
 
+    public ParticleSystem speedTrail;
+
     private void Awake()
     {
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
@@ -38,6 +40,8 @@ public class Ship : MonoBehaviour
     void Start()
     {
         spriteRenderer.sprite = gun1Sprite; // Default sprite upon start
+
+        speedTrail.Stop();
 
         shield = transform.Find("Shield").gameObject;
         DeactivateShield(); // Ship does not have shield upon startup 
@@ -173,11 +177,17 @@ public class Ship : MonoBehaviour
     // Speed PowerUp
     void AddSpeed()
     {
-        speed += 1.5f;
+        if (speed < 5){  // Limit max speed to 5
+            speed += 2f;
+            speedTrail.Play();
+        }
     }
     void LoseSpeed()
     {
-        speed -= 1.5f;
+        if (speed > 3){ // Limit min speed to 3 (default speed)
+            speed -= 2f;
+            speedTrail.Stop();
+        }
     }
 
     // Destroy All On Screen PowerUp

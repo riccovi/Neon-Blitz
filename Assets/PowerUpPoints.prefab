@@ -147,7 +147,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7de33602d558d9b4797c538d22366b15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scoreVal: 50
+  scoreVal: 500
   activateShield: 0
   addGuns: 0
   addSpeed: 0
