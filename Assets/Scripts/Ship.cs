@@ -162,6 +162,7 @@ public class Ship : MonoBehaviour
         {
             if(destructable.transform.position.y < 11f) // If enemies are on screen
             {
+                Instantiate(destructable.enemyExplosion, destructable.transform.position, Quaternion.identity); //Explosion animation for each destructable
                 Destroy(destructable.gameObject); // Destroy Enemy
                 //Level.instance.AddScore(destructable.scoreVal); // Add their score
             }
@@ -174,11 +175,20 @@ public class Ship : MonoBehaviour
     }
 
     void GameOver()
-    {
+    {   
+        //Audio
         audioManager.StopMusic();
         audioManager.PlaySFX(audioManager.shipDeath);
+        // Destroy all
         DestroyAllOnScreen();
-        level.HighScoreUpdate();
+        // Including PowerUps
+        PowerUp[] powerUps = FindObjectsOfType<PowerUp>();
+        foreach (PowerUp powerUp in powerUps){Destroy(powerUp.gameObject);}
+        // Including Explosions
+        enemyExplosion[] explosions = FindObjectsOfType<enemyExplosion>();
+        foreach (enemyExplosion explosion in explosions){Destroy(explosion.gameObject);}
+        // Level
+        level.HighScoreUpdate();    
         Level.instance.TriggerGameOver();
         Destroy(gameObject); 
     }

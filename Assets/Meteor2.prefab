@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4263124366385247523}
   - component: {fileID: 3183508222635506856}
   m_Layer: 0
-  m_Name: Meteor
+  m_Name: Meteor2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -61,6 +61,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d91ec3a4ce3f81428c4d6f0955db9ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyExplosion: {fileID: 662581142285174461, guid: 552f349ebacaa45458b45fd2091248e0, type: 3}
   scoreVal: 20
 --- !u!61 &4263124366385247523
 BoxCollider2D:
@@ -75,7 +76,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.00039421022, y: -0.004833102}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -86,7 +87,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.81204534, y: 0.8136213}
   m_EdgeRadius: 0
 --- !u!50 &3183508222635506856
 Rigidbody2D:
@@ -135,7 +136,7 @@ Transform:
   m_GameObject: {fileID: 2666690593287738048}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 3, y: 3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2666690592746191408}
@@ -182,7 +183,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: cefd3747bee12594099ed4cf9da73709, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 47c394bb7802ac144aa47277f8a1f401, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Destructable : MonoBehaviour
 {
+    public GameObject enemyExplosion;
+    
     bool canBeDestroyed = false;
     public int scoreVal = 50;
 
@@ -47,6 +49,7 @@ public class Destructable : MonoBehaviour
                 Level.instance.AddScore(scoreVal);
                 Destroy(gameObject);
                 Destroy(bullet.gameObject);
+                Instantiate(enemyExplosion, transform.position, Quaternion.identity);
                 audioManager.PlaySFX(audioManager.enemyDeath);
             }
         }
