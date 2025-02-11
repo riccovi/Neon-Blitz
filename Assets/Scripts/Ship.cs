@@ -257,6 +257,10 @@ public class Ship : MonoBehaviour
             {
                 DestroyAllOnScreen();
                 audioManager.PlaySFX(audioManager.powerup3);
+
+                // Trigger screen shake
+                ScreenShake screenShake = Camera.main.GetComponent<ScreenShake>();
+                if (screenShake != null){screenShake.Shake(0.3f,0.2f);} //intensity, duration
             }
             if (powerUp.powerPoints)
             {
