@@ -23,6 +23,11 @@ public class Ship : MonoBehaviour
     AudioManager audioManager;
     public Level level;
 
+    public SpriteRenderer spriteRenderer;
+    public Sprite gun1Sprite;  
+    public Sprite gun2Sprite;
+    public Sprite gun3Sprite; 
+
     private void Awake()
     {
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
@@ -32,6 +37,8 @@ public class Ship : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        spriteRenderer.sprite = gun1Sprite; // Default sprite upon start
+
         shield = transform.Find("Shield").gameObject;
         DeactivateShield(); // Ship does not have shield upon startup 
         guns = transform.GetComponentsInChildren<Gun>(); 
@@ -117,7 +124,7 @@ public class Ship : MonoBehaviour
     // Gun PowerUp
     void AddGuns()
     {   
-        if (powerUpGunLevel < 5) // Ensures max gun level is 5 
+        if (powerUpGunLevel < 2) // Ensures max gun level is 2
         {
             powerUpGunLevel++;
             foreach(Gun gun in guns)
@@ -127,6 +134,7 @@ public class Ship : MonoBehaviour
                     gun.gameObject.SetActive(true);
                 }
             }
+            UpdateGunSprite();
         }
     }
     void LoseGuns()
@@ -141,6 +149,24 @@ public class Ship : MonoBehaviour
                     gun.gameObject.SetActive(false);
                 }
             }
+            UpdateGunSprite();
+        }
+    }
+
+    //Change Ship sprite based on gun level
+    private void UpdateGunSprite()
+    {
+        switch (powerUpGunLevel)
+        {
+            case 0:
+                spriteRenderer.sprite = gun1Sprite;
+                break;
+            case 1:
+                spriteRenderer.sprite = gun2Sprite;
+                break;
+            case 2:
+                spriteRenderer.sprite = gun3Sprite;
+                break;
         }
     }
 
