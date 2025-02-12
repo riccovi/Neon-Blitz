@@ -22,35 +22,39 @@ public class Level : MonoBehaviour
 
     public GameObject gameOverPanel;
     private bool isGameOver = false;
-
+    
     private void Awake()
     {   
         if (instance == null)
         {
           instance = this;
-          DontDestroyOnLoad(gameObject);
+          DontDestroyOnLoad(gameObject); 
           scoreText = GameObject.Find("ScoreText").GetComponent<TMP_Text>();
         }
         else
         {
-            Destroy(gameObject);
+            Destroy(gameObject); 
         }
     }
+    
 
     // Start is called before the first frame update
     void Start()
     {
-        Camera.main.aspect = 4f / 5f; // Set to 4:5 ratio
+        //Camera.main.aspect = 4f / 5f; // Set to 4:5 ratio
     }
+
+
 
     // Update is called once per frame
     void Update()
     {
+        
         if (SceneManager.GetActiveScene().name == "StartMenu")
         {
             return;
         }
-
+        
         if (startNextLvl)
         {
             if (nextLvlTimer <= 0)
@@ -70,7 +74,7 @@ public class Level : MonoBehaviour
             }
             else
             {
-                nextLvlTimer -= Time.deltaTime;
+                nextLvlTimer -= Time.deltaTime; // Decrease timer until 0
             }
         }
 
@@ -93,7 +97,7 @@ public class Level : MonoBehaviour
             scoreText.text = score.ToString();
         }
     }
-
+    
     public void TriggerGameOver()
     {
         Time.timeScale = 0; // 'Pause' the game
@@ -101,7 +105,7 @@ public class Level : MonoBehaviour
         isGameOver = true;
         ResetGameState();
     }
-
+    
     private void ResetGameState()
     {
         numEnemies = 0;
@@ -109,6 +113,7 @@ public class Level : MonoBehaviour
         nextLvlTimer = 1;
         currLvl = 1;
     }
+    
 
     public void HighScoreUpdate()
     {
@@ -133,7 +138,7 @@ public class Level : MonoBehaviour
     public void RemoveEnemy()
     {
         numEnemies--;
-        if (numEnemies == 0)
+        if (numEnemies == 0) // When no more enemies are left, go to next level
         {
             startNextLvl = true;
         }

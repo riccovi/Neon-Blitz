@@ -148,6 +148,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyExplosion: {fileID: 662581142285174461, guid: 552f349ebacaa45458b45fd2091248e0, type: 3}
   scoreVal: 80
+  health: 6
 --- !u!114 &1495726254
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -160,7 +161,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a705d1ea0b2be854a89469930a0fccd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fallSpeed: 1
+  fallSpeed: 1.1
   amplitude: 1
   frequency: 3
   inverted: 0
