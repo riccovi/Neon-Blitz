@@ -8,6 +8,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField] AudioSource sfxSource; 
 
     public AudioClip levelMusic;
+    public AudioClip winMusic; 
     public AudioClip powerup1; // Shield powerup
     public AudioClip powerup2; // Speed powerup
     public AudioClip powerup3; // DestroyAllDestructables powerup 
@@ -32,5 +33,12 @@ public class AudioManager : MonoBehaviour
     public void StopMusic()
     {
         musicSource.Stop();
+    }
+
+    public void PlayWinMusic()
+    {
+        StopMusic();
+        musicSource.clip = winMusic;
+        musicSource.Play();
     }
 }

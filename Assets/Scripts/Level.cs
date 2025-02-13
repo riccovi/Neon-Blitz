@@ -19,16 +19,20 @@ public class Level : MonoBehaviour
     int score = 0;
     TMP_Text scoreText;
     public TMP_Text highScoreText;
+    public TMP_Text highScoreText2; 
 
     public GameObject gameOverPanel;
+    public GameObject gameWinPanel; 
     private bool isGameOver = false;
+
+    AudioManager audioManager;
     
     private void Awake()
     {   
         if (instance == null)
         {
           instance = this;
-          DontDestroyOnLoad(gameObject); 
+          //DontDestroyOnLoad(gameObject); 
           scoreText = GameObject.Find("ScoreText").GetComponent<TMP_Text>();
         }
         else
@@ -67,7 +71,7 @@ public class Level : MonoBehaviour
                 }
                 else
                 {
-                    Debug.Log("GAME OVER");
+                    TriggerGameWin();
                 }
                 nextLvlTimer = 1;
                 startNextLvl = false;
@@ -105,6 +109,17 @@ public class Level : MonoBehaviour
         isGameOver = true;
         ResetGameState();
     }
+
+    public void TriggerGameWin()
+    {
+        FindObjectOfType<AudioManager>().PlayWinMusic();
+        HighScoreUpdate(); 
+        transform.Find("Ship").gameObject.SetActive(false); // Disable ship
+        //Time.timeScale = 0; // 'Pause' the game
+        gameWinPanel.SetActive(true); // Display the GameWin Panel
+        isGameOver = true;
+        ResetGameState();
+    }
     
     private void ResetGameState()
     {
@@ -132,6 +147,7 @@ public class Level : MonoBehaviour
         }
         //Display the saved highscore visually
         highScoreText.text = PlayerPrefs.GetInt("SavedHighScore").ToString(); 
+        highScoreText2.text = highScoreText.text;
     }
     
     public void AddEnemy(){numEnemies++;}
