@@ -13,7 +13,7 @@ public class Level : MonoBehaviour
     uint numEnemies = 0; // Enemy counter
     bool startNextLvl = false;
     float nextLvlTimer = 1; // Wait in seconds before next level
-    string[] levels = {"Level1","Level2"};
+    string[] levels = {"Level1"};
     int currLvl = 1;
 
     int score = 0;

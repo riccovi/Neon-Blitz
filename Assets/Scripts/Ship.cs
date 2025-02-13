@@ -27,13 +27,14 @@ public class Ship : MonoBehaviour
     public Sprite gun1Sprite;  
     public Sprite gun2Sprite;
     public Sprite gun3Sprite; 
+    public Sprite gun4Sprite; 
 
     public ParticleSystem speedTrail;
 
     private void Awake()
     {
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
-        //DontDestroyOnLoad(gameObject);
+        DontDestroyOnLoad(gameObject);
     }
 
     // Start is called before the first frame update
@@ -126,7 +127,7 @@ public class Ship : MonoBehaviour
     // Gun PowerUp
     void AddGuns()
     {   
-        if (powerUpGunLevel < 2) // Ensures max gun level is 2
+        if (powerUpGunLevel < 3) // Ensures max gun level is 3
         {
             powerUpGunLevel++;
             foreach(Gun gun in guns)
@@ -168,6 +169,9 @@ public class Ship : MonoBehaviour
                 break;
             case 2:
                 spriteRenderer.sprite = gun3Sprite;
+                break;
+            case 3:
+                spriteRenderer.sprite = gun4Sprite;
                 break;
         }
     }

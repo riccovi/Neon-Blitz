@@ -5731,6 +5731,7 @@ MonoBehaviour:
   gun1Sprite: {fileID: 21300000, guid: 695c71d8e2231da46a462adc3674c8f6, type: 3}
   gun2Sprite: {fileID: 21300000, guid: a80c4537d0ae482499b16766b544b16b, type: 3}
   gun3Sprite: {fileID: 21300000, guid: 48f177a8d3d4be34b8dc06984f8953a1, type: 3}
+  gun4Sprite: {fileID: 21300000, guid: 6c69477244da7c5499de9b7432a05340, type: 3}
   speedTrail: {fileID: 277839265}
 --- !u!50 &221830198626329638
 Rigidbody2D:
@@ -6763,7 +6764,6 @@ GameObject:
   - component: {fileID: 7681868049643580671}
   - component: {fileID: 7681868049643580664}
   - component: {fileID: 7681868049643580665}
-  - component: {fileID: 8048011953002598949}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -6821,18 +6821,6 @@ MonoBehaviour:
   m_InputActionsPerSecond: 10
   m_RepeatDelay: 0.5
   m_ForceModuleActive: 0
---- !u!114 &8048011953002598949
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7681868049643580666}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 49e9dded06aed514cb1847b07cffd30b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &8309805894429218974
 GameObject:
   m_ObjectHideFlags: 0

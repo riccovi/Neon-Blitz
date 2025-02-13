@@ -9,6 +9,7 @@ public class Destructable : MonoBehaviour
     bool canBeDestroyed = false;
     public int scoreVal = 50;
     public int health = 1;
+    public float topBorder = 11f;
 
     AudioManager audioManager;
 
@@ -27,7 +28,7 @@ public class Destructable : MonoBehaviour
     void Update()
     {
         // Once on screen, allow enemy to be destroyed
-        if (transform.position.y < 11f && !canBeDestroyed ) 
+        if (transform.position.y < topBorder && !canBeDestroyed ) 
         {
             canBeDestroyed = true;
             // Guns only shoot when on screen
