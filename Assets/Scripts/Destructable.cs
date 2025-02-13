@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Destructable : MonoBehaviour
 {
@@ -11,12 +12,14 @@ public class Destructable : MonoBehaviour
     public int health = 1;
     public float topBorder = 11f;
 
+    // Boss
     public bool isBoss = false;
     public int explosionCount = 10;
     public float explosionArea = 5f;
+    public Image healthBar;
 
     AudioManager audioManager;
-
+    
     private void Awake()
     {
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
@@ -64,6 +67,11 @@ public class Destructable : MonoBehaviour
     public void TakeDamage(int damage)
     {
         health -= damage;
+        if (isBoss)
+        {
+            transform.Find("Canvas").gameObject.SetActive(true); // Enable health bar when first hit to boss
+            healthBar.fillAmount = health / 10f; // Max health of boss
+        }
 
         if (health <= 0)
         {
