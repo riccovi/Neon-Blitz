@@ -332,6 +332,9 @@ MonoBehaviour:
   scoreVal: 1000
   health: 10
   topBorder: 15
+  isBoss: 1
+  explosionCount: 50
+  explosionArea: 4
 --- !u!114 &1495726254
 MonoBehaviour:
   m_ObjectHideFlags: 0

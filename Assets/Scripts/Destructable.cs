@@ -11,6 +11,10 @@ public class Destructable : MonoBehaviour
     public int health = 1;
     public float topBorder = 11f;
 
+    public bool isBoss = false;
+    public int explosionCount = 10;
+    public float explosionArea = 5f;
+
     AudioManager audioManager;
 
     private void Awake()
@@ -71,8 +75,31 @@ public class Destructable : MonoBehaviour
     {
         Level.instance.AddScore(scoreVal); // Add score
         Destroy(gameObject); // Destroy enemy
-        Instantiate(enemyExplosion, transform.position, Quaternion.identity); // Explosion animation
+        if (isBoss)
+        {
+            TriggerBossExplosion();
+            TriggerScreenShake();
+        }
+        else{
+            Instantiate(enemyExplosion, transform.position, Quaternion.identity); // Single explosion animation
+        }
         audioManager.PlaySFX(audioManager.enemyDeath); // Play audio
+    }
+
+    private void TriggerBossExplosion()
+    {
+        // Spawn multiple explosions at random positions around the boss
+        for (int i = 0; i < explosionCount; i++)
+        {
+            Vector2 randomPos = (Vector2)transform.position + new Vector2(Random.Range(-explosionArea, explosionArea), Random.Range(-explosionArea, explosionArea));
+            Instantiate(enemyExplosion, randomPos, Quaternion.identity);
+        }
+    }
+
+    private void TriggerScreenShake()
+    {
+        ScreenShake screenShake = Camera.main.GetComponent<ScreenShake>();
+        if (screenShake != null){screenShake.Shake(0.5f,1f);} //intensity, duration
     }
 
     private void OnDestroy()
