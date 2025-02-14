@@ -70,7 +70,7 @@ public class Destructable : MonoBehaviour
         if (isBoss)
         {
             transform.Find("Canvas").gameObject.SetActive(true); // Enable health bar when first hit to boss
-            healthBar.fillAmount = health / 10f; // Max health of boss
+            healthBar.fillAmount = health / 75f; // Max health of boss
         }
 
         if (health <= 0)

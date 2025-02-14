@@ -663,7 +663,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyExplosion: {fileID: 662581142285174461, guid: 552f349ebacaa45458b45fd2091248e0, type: 3}
   scoreVal: 1000
-  health: 10
+  health: 75
   topBorder: 15
   isBoss: 1
   explosionCount: 50
