@@ -57,11 +57,22 @@ public class Destructable : MonoBehaviour
             {
                 TakeDamage(1); // Reduce health by 1 when hit by bullet
                 if (health > 0){ // If enemy is not dead, play enemy hit sound, otherwise it will be enemy death sound
+                    if(!isBoss){StartCoroutine(FlashRed());}
                     audioManager.PlaySFX(audioManager.enemyHit); 
                 }
                 Destroy(bullet.gameObject); // Remove bullet
             }
         }
+    }
+
+    private IEnumerator FlashRed()
+    {
+        SpriteRenderer spriteRenderer = GetComponentInChildren<SpriteRenderer>(); 
+        if (spriteRenderer == null) yield break;
+        Color originalColor = spriteRenderer.color; 
+        spriteRenderer.color = new Color(1f, 0.5f, 0.5f, 1f);
+        yield return new WaitForSeconds(0.05f); 
+        spriteRenderer.color = originalColor; 
     }
 
     public void TakeDamage(int damage)

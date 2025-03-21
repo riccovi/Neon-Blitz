@@ -35,6 +35,7 @@ public class StartMenu : MonoBehaviour
             if (counter == 0)
             {
                 upgradesPanel.SetActive(true); //Enable upgrades panel
+                creditsPanel.SetActive(false);
                 pressText.SetActive(false); // Disable 'press x' text
                 counter++;
             // Second X press - zoom in
@@ -42,6 +43,7 @@ public class StartMenu : MonoBehaviour
             {
                 if (startSound != null){startSound.Play();} // Play start sound 
                 upgradesPanel.SetActive(false); // Disable upgrades panel
+                creditsPanel.SetActive(false);
                 isZooming = true;
             }    
         }
@@ -49,6 +51,7 @@ public class StartMenu : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.C))
         {
             creditsPanel.SetActive(!creditsPanel.activeSelf);
+            upgradesPanel.SetActive(false);
         }
 
         if (isZooming) 
