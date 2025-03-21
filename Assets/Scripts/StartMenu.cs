@@ -43,7 +43,7 @@ public class StartMenu : MonoBehaviour
                 upgradesPanel.SetActive(true); //Enable upgrades panel
                 creditsPanel.SetActive(false);
                 achievementsPanel.SetActive(false);
-                pressText.SetActive(false); // Disable 'press x' text
+                //pressText.SetActive(false); // Disable 'press x' text
                 counter++;
             // Second X press - zoom in
             } else if (!isZooming)
