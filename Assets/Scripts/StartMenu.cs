@@ -7,6 +7,7 @@ public class StartMenu : MonoBehaviour
 {
     public AudioSource startSound;
     public GameObject upgradesPanel;
+    public GameObject creditsPanel;
     public GameObject pressText;
     private int counter = 0;
 
@@ -43,6 +44,11 @@ public class StartMenu : MonoBehaviour
                 upgradesPanel.SetActive(false); // Disable upgrades panel
                 isZooming = true;
             }    
+        }
+
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            creditsPanel.SetActive(!creditsPanel.activeSelf);
         }
 
         if (isZooming) 

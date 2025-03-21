@@ -6326,18 +6326,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Level
       objectReference: {fileID: 0}
-    - target: {fileID: 3316426150576243057, guid: b3214055c94c41f479433548f9808a54, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -1.1900024
-      objectReference: {fileID: 0}
-    - target: {fileID: 4785320547986814867, guid: b3214055c94c41f479433548f9808a54, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4868854836606320896, guid: b3214055c94c41f479433548f9808a54, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4934520938137891092, guid: b3214055c94c41f479433548f9808a54, type: 3}
       propertyPath: m_RootOrder
       value: 2
