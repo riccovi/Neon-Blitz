@@ -21,6 +21,12 @@ public class StartMenu : MonoBehaviour
     private bool isZooming = false;
     [SerializeField] private Camera cam;
 
+    //Achievements
+    public GameObject achievementsPanel;
+    public GameObject achievement1;
+    public GameObject achievement2;
+    public GameObject achievement3;
+
     void Start()
     {
        Camera.main.aspect = 4f / 5f; // Set to 4:5 ratio
@@ -36,6 +42,7 @@ public class StartMenu : MonoBehaviour
             {
                 upgradesPanel.SetActive(true); //Enable upgrades panel
                 creditsPanel.SetActive(false);
+                achievementsPanel.SetActive(false);
                 pressText.SetActive(false); // Disable 'press x' text
                 counter++;
             // Second X press - zoom in
@@ -44,15 +51,39 @@ public class StartMenu : MonoBehaviour
                 if (startSound != null){startSound.Play();} // Play start sound 
                 upgradesPanel.SetActive(false); // Disable upgrades panel
                 creditsPanel.SetActive(false);
+                achievementsPanel.SetActive(false);
                 isZooming = true;
             }    
         }
 
         if (Input.GetKeyDown(KeyCode.C))
         {
-            creditsPanel.SetActive(!creditsPanel.activeSelf);
+            counter = 0;
             upgradesPanel.SetActive(false);
+            achievementsPanel.SetActive(false);
+            creditsPanel.SetActive(!creditsPanel.activeSelf);
         }
+
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            counter = 0;
+            upgradesPanel.SetActive(false);
+            creditsPanel.SetActive(false);
+            achievementsPanel.SetActive(!achievementsPanel.activeSelf);
+            if (PlayerPrefs.GetInt("Achievement1", 0) == 1)
+            {
+                achievement1.SetActive(true);
+            }
+            if (PlayerPrefs.GetInt("Achievement2", 0) == 1)
+            {
+                achievement2.SetActive(true);
+            }  
+            if (PlayerPrefs.GetInt("Achievement3", 0) == 1)
+            {
+                achievement3.SetActive(true);
+            }        
+        }
+
 
         if (isZooming) 
         {

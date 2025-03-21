@@ -4550,7 +4550,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 6.93, y: 150}
+  m_AnchoredPosition: {x: -104.5, y: 150}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1688644702
@@ -4607,7 +4607,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 1
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -5198,7 +5198,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1990410501
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5590,6 +5590,10 @@ MonoBehaviour:
   creditsPanel: {fileID: 726852917}
   pressText: {fileID: 1869195142}
   cam: {fileID: 2093688984}
+  achievementsPanel: {fileID: 1990410500}
+  achievement1: {fileID: 1283739394}
+  achievement2: {fileID: 1225403876}
+  achievement3: {fileID: 239277551}
 --- !u!82 &2093688987
 AudioSource:
   m_ObjectHideFlags: 0

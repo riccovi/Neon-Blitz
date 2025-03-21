@@ -112,6 +112,12 @@ public class Level : MonoBehaviour
 
     public void TriggerGameWin()
     {
+        // Achievement: Beat the game
+        if (PlayerPrefs.GetInt("Achievement2", 0) == 0) 
+        {
+            PlayerPrefs.SetInt("Achievement1", 1); // Mark achievement as unlocked
+            PlayerPrefs.Save(); 
+        }
         FindObjectOfType<AudioManager>().PlayWinMusic();
         HighScoreUpdate(); 
         transform.Find("Ship").gameObject.SetActive(false); // Disable ship
@@ -148,6 +154,19 @@ public class Level : MonoBehaviour
         //Display the saved highscore visually
         highScoreText.text = PlayerPrefs.GetInt("SavedHighScore").ToString(); 
         highScoreText2.text = highScoreText.text;
+
+        // Achievement: Score above 2000
+        if (score >= 2000 && PlayerPrefs.GetInt("Achievement1", 0) == 0) 
+        {
+            PlayerPrefs.SetInt("Achievement1", 1); // Mark achievement as unlocked
+            PlayerPrefs.Save(); 
+        }
+        // Achievement: Score above 6000
+        if (score >= 6000 && PlayerPrefs.GetInt("Achievement3", 0) == 0) 
+        {
+            PlayerPrefs.SetInt("Achievement3", 1); // Mark achievement as unlocked
+            PlayerPrefs.Save(); 
+        }
     }
     
     public void AddEnemy(){numEnemies++;}
