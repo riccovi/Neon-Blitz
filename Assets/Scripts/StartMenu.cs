@@ -22,7 +22,7 @@ public class StartMenu : MonoBehaviour
 
     void Start()
     {
-       // Camera.main.aspect = 4f / 5f; // Set to 4:5 ratio
+       Camera.main.aspect = 4f / 5f; // Set to 4:5 ratio
        zoom = cam.orthographicSize;
     }
 
