@@ -2,12 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;  
+using UnityEngine.UI;
+using TMPro;
 
 public class StartMenu : MonoBehaviour
 {
     public AudioSource startSound;
     public GameObject upgradesPanel;
     public GameObject creditsPanel;
+    public GameObject leaderboardPanel;
     public GameObject pressText;
     private int counter = 0;
 
@@ -27,10 +30,18 @@ public class StartMenu : MonoBehaviour
     public GameObject achievement2;
     public GameObject achievement3;
 
+    public TMP_Text highScoreText;
+    public TMP_Text highScoreText2;
+    public TMP_Text highScoreText3;
+    public TMP_Text highScoreText4;
+    public TMP_Text highScoreText5;
+    private string hiscore;
+
     void Start()
     {
        Camera.main.aspect = 4f / 5f; // Set to 4:5 ratio
        zoom = cam.orthographicSize;
+       hiscore = PlayerPrefs.GetInt("SavedHighScore").ToString();
     }
 
     void Update()
@@ -43,6 +54,7 @@ public class StartMenu : MonoBehaviour
                 upgradesPanel.SetActive(true); //Enable upgrades panel
                 creditsPanel.SetActive(false);
                 achievementsPanel.SetActive(false);
+                leaderboardPanel.SetActive(false);
                 //pressText.SetActive(false); // Disable 'press x' text
                 counter++;
             // Second X press - zoom in
@@ -52,23 +64,116 @@ public class StartMenu : MonoBehaviour
                 upgradesPanel.SetActive(false); // Disable upgrades panel
                 creditsPanel.SetActive(false);
                 achievementsPanel.SetActive(false);
+                leaderboardPanel.SetActive(false);
                 isZooming = true;
             }    
         }
 
+        // Credits Panel
         if (Input.GetKeyDown(KeyCode.C))
         {
             counter = 0;
             upgradesPanel.SetActive(false);
             achievementsPanel.SetActive(false);
+            leaderboardPanel.SetActive(false);
             creditsPanel.SetActive(!creditsPanel.activeSelf);
         }
 
+        // Leaderboard Panel
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            counter = 0;
+            upgradesPanel.SetActive(false);
+            achievementsPanel.SetActive(false);
+            creditsPanel.SetActive(false);
+            leaderboardPanel.SetActive(!leaderboardPanel.activeSelf);
+            //Getting high score
+            highScoreText.text = hiscore; 
+            highScoreText2.text = hiscore; 
+            highScoreText3.text = hiscore; 
+            highScoreText4.text = hiscore; 
+            highScoreText5.text = hiscore; 
+            //Positioning user on leaderboard logic
+            if(PlayerPrefs.GetInt("SavedHighScore") >= 5200){ // 1st Position
+                leaderboardPanel.transform.Find("1stPosition/ToddText").gameObject.SetActive(false);
+                leaderboardPanel.transform.Find("1stPosition/5200Text").gameObject.SetActive(false);
+                leaderboardPanel.transform.Find("1stPosition/YouText").gameObject.SetActive(true);
+                leaderboardPanel.transform.Find("1stPosition/hiscoreText").gameObject.SetActive(true);
+                leaderboardPanel.transform.Find("2ndPosition/EmmaText").gameObject.SetActive(false);
+                leaderboardPanel.transform.Find("2ndPosition/4150Text").gameObject.SetActive(false);
+                leaderboardPanel.transform.Find("2ndPosition/ToddText").gameObject.SetActive(true);
+                leaderboardPanel.transform.Find("2ndPosition/5200Text").gameObject.SetActive(true);
+                leaderboardPanel.transform.Find("3rdPosition/BenText").gameObject.SetActive(false);
+                leaderboardPanel.transform.Find("3rdPosition/3100Text").gameObject.SetActive(false);
+                leaderboardPanel.transform.Find("3rdPosition/EmmaText").gameObject.SetActive(true);
+                leaderboardPanel.transform.Find("3rdPosition/4150Text").gameObject.SetActive(true);
+                leaderboardPanel.transform.Find("4thPosition/SamText").gameObject.SetActive(false);
+                leaderboardPanel.transform.Find("4thPosition/2050Text").gameObject.SetActive(false);
+                leaderboardPanel.transform.Find("4thPosition/BenText").gameObject.SetActive(true);
+                leaderboardPanel.transform.Find("4thPosition/3100Text").gameObject.SetActive(true);
+                leaderboardPanel.transform.Find("5thPosition/RookieText").gameObject.SetActive(false);
+                leaderboardPanel.transform.Find("5thPosition/1000Text").gameObject.SetActive(false);
+                leaderboardPanel.transform.Find("5thPosition/SamText").gameObject.SetActive(true);
+                leaderboardPanel.transform.Find("5thPosition/2050Text").gameObject.SetActive(true);
+            }
+            else if(PlayerPrefs.GetInt("SavedHighScore") >= 4150){ // 2nd Position
+                leaderboardPanel.transform.Find("2ndPosition/EmmaText").gameObject.SetActive(false);
+                leaderboardPanel.transform.Find("2ndPosition/4150Text").gameObject.SetActive(false);
+                leaderboardPanel.transform.Find("2ndPosition/YouText").gameObject.SetActive(true);
+                leaderboardPanel.transform.Find("2ndPosition/hiscoreText").gameObject.SetActive(true);
+                leaderboardPanel.transform.Find("3rdPosition/BenText").gameObject.SetActive(false);
+                leaderboardPanel.transform.Find("3rdPosition/3100Text").gameObject.SetActive(false);
+                leaderboardPanel.transform.Find("3rdPosition/EmmaText").gameObject.SetActive(true);
+                leaderboardPanel.transform.Find("3rdPosition/4150Text").gameObject.SetActive(true);
+                leaderboardPanel.transform.Find("4thPosition/SamText").gameObject.SetActive(false);
+                leaderboardPanel.transform.Find("4thPosition/2050Text").gameObject.SetActive(false);
+                leaderboardPanel.transform.Find("4thPosition/BenText").gameObject.SetActive(true);
+                leaderboardPanel.transform.Find("4thPosition/3100Text").gameObject.SetActive(true);
+                leaderboardPanel.transform.Find("5thPosition/RookieText").gameObject.SetActive(false);
+                leaderboardPanel.transform.Find("5thPosition/1000Text").gameObject.SetActive(false);
+                leaderboardPanel.transform.Find("5thPosition/SamText").gameObject.SetActive(true);
+                leaderboardPanel.transform.Find("5thPosition/2050Text").gameObject.SetActive(true);
+            }
+            else if(PlayerPrefs.GetInt("SavedHighScore") >= 3100){ // 3rd Position
+                leaderboardPanel.transform.Find("3rdPosition/BenText").gameObject.SetActive(false);
+                leaderboardPanel.transform.Find("3rdPosition/3100Text").gameObject.SetActive(false);
+                leaderboardPanel.transform.Find("3rdPosition/YouText").gameObject.SetActive(true);
+                leaderboardPanel.transform.Find("3rdPosition/hiscoreText").gameObject.SetActive(true);
+                leaderboardPanel.transform.Find("4thPosition/SamText").gameObject.SetActive(false);
+                leaderboardPanel.transform.Find("4thPosition/2050Text").gameObject.SetActive(false);
+                leaderboardPanel.transform.Find("4thPosition/BenText").gameObject.SetActive(true);
+                leaderboardPanel.transform.Find("4thPosition/3100Text").gameObject.SetActive(true);
+                leaderboardPanel.transform.Find("5thPosition/RookieText").gameObject.SetActive(false);
+                leaderboardPanel.transform.Find("5thPosition/1000Text").gameObject.SetActive(false);
+                leaderboardPanel.transform.Find("5thPosition/SamText").gameObject.SetActive(true);
+                leaderboardPanel.transform.Find("5thPosition/2050Text").gameObject.SetActive(true);
+            }
+            else if(PlayerPrefs.GetInt("SavedHighScore") >= 2050){ // 4th Position
+                leaderboardPanel.transform.Find("4thPosition/SamText").gameObject.SetActive(false);
+                leaderboardPanel.transform.Find("4thPosition/2050Text").gameObject.SetActive(false);
+                leaderboardPanel.transform.Find("4thPosition/YouText").gameObject.SetActive(true);
+                leaderboardPanel.transform.Find("4thPosition/hiscoreText").gameObject.SetActive(true);
+                leaderboardPanel.transform.Find("5thPosition/RookieText").gameObject.SetActive(false);
+                leaderboardPanel.transform.Find("5thPosition/1000Text").gameObject.SetActive(false);
+                leaderboardPanel.transform.Find("5thPosition/SamText").gameObject.SetActive(true);
+                leaderboardPanel.transform.Find("5thPosition/2050Text").gameObject.SetActive(true);
+            }
+            else if(PlayerPrefs.GetInt("SavedHighScore") >= 1000){ // 5th Position
+                leaderboardPanel.transform.Find("5thPosition/RookieText").gameObject.SetActive(false);
+                leaderboardPanel.transform.Find("5thPosition/1000Text").gameObject.SetActive(false);
+                leaderboardPanel.transform.Find("5thPosition/YouText").gameObject.SetActive(true);
+                leaderboardPanel.transform.Find("5thPosition/hiscoreText").gameObject.SetActive(true);
+            }
+            
+        }
+
+        // Achivements Panel
         if (Input.GetKeyDown(KeyCode.A))
         {
             counter = 0;
             upgradesPanel.SetActive(false);
             creditsPanel.SetActive(false);
+            leaderboardPanel.SetActive(false);
             achievementsPanel.SetActive(!achievementsPanel.activeSelf);
             if (PlayerPrefs.GetInt("Achievement1", 0) == 1)
             {
